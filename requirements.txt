@@ -1,0 +1,10 @@
+
+fastapi[standard]
+uvicorn
+sqlalchemy
+pandas
+python-dotenv
+streamlit
+plotly
+requests
+pytest
