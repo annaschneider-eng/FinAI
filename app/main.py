@@ -1,7 +1,12 @@
 
 from fastapi import FastAPI
 
-# Criando a aplicação
+from app.database.connection import Base, engine
+from app.models.transaction import Transaction
+
+# Criar as tabelas do banco de dados
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI(
     title="FinAI API",
     description="Assistente Financeiro Inteligente",
@@ -9,7 +14,6 @@ app = FastAPI(
 )
 
 
-# Rota inicial
 @app.get("/")
 def home():
     return {
@@ -18,7 +22,6 @@ def home():
     }
 
 
-# Rota de verificação
 @app.get("/health")
 def health_check():
     return {
@@ -27,7 +30,6 @@ def health_check():
     }
 
 
-# Rota de apresentação do sistema
 @app.get("/about")
 def about():
     return {
